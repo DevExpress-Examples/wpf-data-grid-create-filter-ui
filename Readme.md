@@ -2,7 +2,7 @@
 *Files to look at*:
 
 * [MainWindow.xaml](./CS/WpfApplication27/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/WpfApplication27/MainWindow.xaml))
-* [MainWindow.xaml.cs](./CS/WpfApplication27/MainWindow.xaml.cs) (VB: [MainWindow.xaml](./VB/WpfApplication27/MainWindow.xaml))
+* [MainWindow.xaml.cs](./CS/WpfApplication27/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/WpfApplication27/MainWindow.xaml.vb))
 * [ViewModel.cs](./CS/WpfApplication27/ViewModel.cs) (VB: [ViewModel.vb](./VB/WpfApplication27/ViewModel.vb))
 <!-- default file list end -->
 # How to create a simple filtering UI for GridControl with nested properties
