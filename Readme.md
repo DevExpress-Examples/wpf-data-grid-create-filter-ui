@@ -22,8 +22,8 @@ Accordion items contain [Filter Elements](https://docs.devexpress.com/WPF/400314
 
 ## Files to Review
 
-* [MainWindow.xaml](./CS/GridControlFilterUI/MainWindow.xaml) <!--(VB: [MainWindow.xaml](./VB/GridControlFilterUI/MainWindow.xaml))-->
-* [ViewModel.cs](./CS/GridControlFilterUI/ViewModel.cs) <!--(VB: [ViewModel.vb](./VB/GridControlFilterUI/ViewModel.vb))-->
+* [MainWindow.xaml](./CS/GridControlFilterUI/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/GridControlFilterUI/MainWindow.xaml))
+* [ViewModel.cs](./CS/GridControlFilterUI/ViewModel.cs) (VB: [ViewModel.vb](./VB/GridControlFilterUI/ViewModel.vb))
 
 ## Documentation
 
