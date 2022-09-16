@@ -3,28 +3,35 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T535554)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
 
-* [MainWindow.xaml](./CS/WpfApplication27/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/WpfApplication27/MainWindow.xaml))
-* [MainWindow.xaml.cs](./CS/WpfApplication27/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/WpfApplication27/MainWindow.xaml.vb))
-* [ViewModel.cs](./CS/WpfApplication27/ViewModel.cs) (VB: [ViewModel.vb](./VB/WpfApplication27/ViewModel.vb))
-<!-- default file list end -->
-# How to create a simple filtering UI for GridControl with nested properties
+# WPF Data Grid - Create a UI to Filter Grid Data
 
+This example demonstrates how to create a filter UI for Data Grid.
 
-<p>This example demonstrates how to create a simple filtering UI for GridControl. The main idea is to use the special FilteringBehavior which can be integrated to <a href="https://documentation.devexpress.com/WPF/11540/Controls-and-Libraries/Layout-Management/Tile-and-Layout/Layout-and-Data-Layout-Controls/Data-Layout-Control">DataLayoutControl</a>. First thing you need to do is to bind your <a href="https://documentation.devexpress.com/WPF/DevExpress.Xpf.Grid.DataControlBase.FilterCriteria.property">GridControl.FilterCriteria</a> property to the FilteringBehavior.FilterCriteria property to synchronize their current filter expressions. Then, you are required to set the object whose properties will be displayed and edited by your DataLayoutControl. To achieve this, set the <a href="https://documentation.devexpress.com/WPF/DevExpress.Xpf.LayoutControl.DataLayoutControl.CurrentItem.property">DataLayoutControl.CurrentItem</a> property to the FilteringBehavior's FilteringViewModel property. After that, create the required layout of items in your DataLayoutControl and bind them to corresponding properties of your view model. Note that you can use <a href="https://msdn.microsoft.com/en-us/en-es/library/system.componentmodel.dataannotations(v=vs.110).aspx">DataAnnotation</a> attributes for properties in your view model to specify which controls will be used in your DataLayoutControl.<br>Also, FilteringBehavior provides the capability to filter the nested object's properties. All you need is to bind the required DataLayoutItem to a corresponding nested property. You will see this in action in the current example.</p>
-<p> </p>
-<p><strong>Important</strong>: In this example, we used the grid's <a href="https://documentation.devexpress.com/WPF/DevExpress.Xpf.Grid.DataControlBase.FilterCriteria.property">FilterCriteria</a> property and disabled grid-level filtering. If you want to use <strong>FilteringBehavior</strong> without losing the possibility of filtering data in your grid (using the <a href="https://documentation.devexpress.com/WPF/6133/Controls-and-Libraries/Data-Grid/Filtering-and-Searching/Filter-Dropdown">Filter Dropdown</a>, <a href="https://documentation.devexpress.com/WPF/7788/Controls-and-Libraries/Data-Grid/Filtering-and-Searching/Filter-Editor">Filter Editor</a>, etc.), bind the <a href="https://documentation.devexpress.com/#WPF/DevExpressXpfGridDataControlBase_FixedFiltertopic">FixedFilter</a> property instead:</p>
+![image](https://user-images.githubusercontent.com/65009440/190639827-d62ea1c9-ead4-41c5-97d3-316b43018ce5.png)
 
+In this example, the [AccordionControl](https://docs.devexpress.com/WPF/DevExpress.Xpf.Accordion.AccordionControl) is bound to the [GridControl](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.GridControl)'s `FilteringContext` property:
 
-```xaml
-<dxg:GridControl x:Name="myGrid" Grid.Column="1" ItemsSource="{Binding Orders}" FixedFilter="{Binding Path=FilterCriteria, ElementName=filteringBehavior}">
+```xml
+<dxa:AccordionControl SelectionMode="None" dxfui:FilterElement.Context="{Binding Path=FilteringContext, ElementName=grid}">
+  ...
+</dxa:AccordionControl>
 ```
 
+Accordion items contain [Filter Elements](https://docs.devexpress.com/WPF/400314/controls-and-libraries/data-grid/filtering-and-searching/filter-elements) that allow you to filter grid data. Set the GridControl's [ShowAllTableValuesInFilterPopup](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.DataControlBase.ShowAllTableValuesInFilterPopup) property to `true` to display all values in the [RadioListFilterElement](https://docs.devexpress.com/WPF/DevExpress.Xpf.Core.FilteringUI.RadioListFilterElement) and [CheckedListFilterElement](https://docs.devexpress.com/WPF/DevExpress.Xpf.Core.FilteringUI.CheckedListFilterElement) even if they are filtered out.
 
-<p><br><strong>See also:<br></strong><a href="https://www.devexpress.com/Support/Center/p/T328691">How to generate a filter set based on DataLayoutControl</a><strong><br></strong></p>
+## Files to Review
 
-<br/>
+* [MainWindow.xaml](./CS/GridControlFilterUI/MainWindow.xaml) <!--(VB: [MainWindow.xaml](./VB/GridControlFilterUI/MainWindow.xaml))-->
+* [ViewModel.cs](./CS/GridControlFilterUI/ViewModel.cs) <!--(VB: [ViewModel.vb](./VB/GridControlFilterUI/ViewModel.vb))-->
 
+## Documentation
 
+* [Filter Elements](https://docs.devexpress.com/WPF/400314/controls-and-libraries/data-grid/filtering-and-searching/filter-elements)
+* [Filtering and Searching](https://docs.devexpress.com/WPF/7356/controls-and-libraries/data-grid/filtering-and-searching)
+
+## More Examples
+
+* [WPF Data Grid - How to Apply a Custom Filter Condition](https://github.com/DevExpress-Examples/wpf-data-grid-implement-custom-filtering)
+* [WPF Data Grid - Customize Filter Items in a Column's Drop-Down Filter](https://github.com/DevExpress-Examples/how-to-customize-filter-items-within-a-columns-filter-dropdown-e1533)
+* [Charts for WPF - Create Filter UI to Filter Series Data](https://github.com/DevExpress-Examples/wpf-charts-use-filterbehavior-to-filter-series-data)
