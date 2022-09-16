@@ -1,0 +1,75 @@
+<Window x:Class="GridControlFilterUI.MainWindow"
+        mc:Ignorable="d" Height="400" Width="900"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:GridControlFilterUI"
+        xmlns:dxa="http://schemas.devexpress.com/winfx/2008/xaml/accordion"
+        xmlns:dxfui="http://schemas.devexpress.com/winfx/2008/xaml/core/filteringui"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid">
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <dxa:AccordionControl SelectionMode="None" dxfui:FilterElement.Context="{Binding Path=FilteringContext, ElementName=grid}">
+            <dxa:AccordionItem Header="Filter Orders" IsExpanded="True" ExpandButtonPosition="None">
+                <dxa:AccordionItem Header="Discount" IsExpanded="True">
+                    <dxfui:PredefinedFiltersElement FieldName="Discount">
+                        <dxfui:PredefinedFiltersElement.Resources>
+                            <dxe:ListBoxEditStyle x:Key="{x:Type dxe:ListBoxEdit}" ShowBorder="False"/>
+                        </dxfui:PredefinedFiltersElement.Resources>
+                    </dxfui:PredefinedFiltersElement>
+                </dxa:AccordionItem>
+                <dxa:AccordionItem Header="Unit Price" IsExpanded="True">
+                    <dxfui:RangeFilterElement FieldName="UnitPrice" Width="170" HorizontalAlignment="Left"/>
+                </dxa:AccordionItem>
+                <dxa:AccordionItem Header="City" IsExpanded="True">
+                    <dxfui:RadioListFilterElement FieldName="City">
+                        <dxfui:RadioListFilterElement.Resources>
+                            <dxe:ListBoxEditStyle x:Key="{x:Type dxe:ListBoxEdit}" ShowBorder="False"/>
+                        </dxfui:RadioListFilterElement.Resources>
+                    </dxfui:RadioListFilterElement>
+                </dxa:AccordionItem>
+                <dxa:AccordionItem Header="Category" IsExpanded="True">
+                    <dxfui:CheckedListFilterElement FieldName="Product.CategoryName">
+                        <dxfui:CheckedListFilterElement.Resources>
+                            <dxe:ListBoxEditStyle x:Key="{x:Type dxe:ListBoxEdit}" ShowBorder="False"/>
+                        </dxfui:CheckedListFilterElement.Resources>
+                    </dxfui:CheckedListFilterElement>
+                </dxa:AccordionItem>
+            </dxa:AccordionItem>
+        </dxa:AccordionControl>
+
+        <dxg:GridControl x:Name="grid" Grid.Column="1" ItemsSource="{Binding Orders}" ShowAllTableValuesInFilterPopup="True">
+            <dxg:GridControl.Bands>
+                <dxg:GridControlBand Header="Product">
+                    <dxg:GridColumn FieldName="Product.ProductName" Header="ProductName"/>
+                    <dxg:GridColumn FieldName="Product.CategoryName" Header="CategoryName"/>
+                </dxg:GridControlBand>
+                <dxg:GridControlBand Header="Order" OverlayHeaderByChildren="True">
+                    <dxg:GridColumn FieldName="City"/>
+                    <dxg:GridColumn FieldName="Discount">
+                        <dxg:GridColumn.PredefinedFilters>
+                            <dxfui:PredefinedFilterCollection>
+                                <dxfui:PredefinedFilter Filter="?p > 10" Name="More than 10" />
+                                <dxfui:PredefinedFilter Filter="?p >= 5 AND ?p &lt;= 10" Name="From 5 to 10" />
+                                <dxfui:PredefinedFilter Filter="?p > 0 AND ?p &lt; 5" Name="Less than 5" />
+                            </dxfui:PredefinedFilterCollection>
+                        </dxg:GridColumn.PredefinedFilters>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="Quantity"/>
+                    <dxg:GridColumn FieldName="UnitPrice"/>
+                </dxg:GridControlBand>
+            </dxg:GridControl.Bands>
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</Window>
