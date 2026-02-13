@@ -37,7 +37,7 @@ Accordion items contain [Filter Elements](https://docs.devexpress.com/WPF/400314
 * [WPF Data Grid - Customize Filter Items in a Column's Drop-Down Filter](https://github.com/DevExpress-Examples/how-to-customize-filter-items-within-a-columns-filter-dropdown-e1533)
 * [Charts for WPF - Create Filter UI to Filter Series Data](https://github.com/DevExpress-Examples/wpf-charts-use-filterbehavior-to-filter-series-data)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-data-grid-create-filter-ui&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-data-grid-create-filter-ui&~~~was_helpful=no)
 
